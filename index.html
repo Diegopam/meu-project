@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GBA Vault — Agregador Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+
+    <header class="topbar container">
+      <div class="brand">
+        <span class="brand__logo">🎮</span>
+        <div>
+          <h1>GBA Vault</h1>
+          <p>Seu agregador premium de jogos Game Boy Advance</p>
+        </div>
+      </div>
+      <a class="btn btn--ghost" href="https://github.com/endrift/gbajs" target="_blank" rel="noreferrer">Ver GBA.js</a>
+    </header>
+
+    <main class="container layout">
+      <section class="card card--player">
+        <div class="card__header">
+          <h2>Emulador embutido</h2>
+          <p>Use uma ROM local ou selecione da sua biblioteca.</p>
+        </div>
+
+        <div class="player-controls">
+          <label class="upload">
+            <input id="rom-upload" type="file" accept=".gba" />
+            <span>+ Carregar ROM (.gba)</span>
+          </label>
+          <button id="clear-library" class="btn">Limpar biblioteca</button>
+        </div>
+
+        <div class="screen-wrap">
+          <iframe
+            id="emulator-frame"
+            title="GBA Emulator"
+            src="https://gba.js.org/"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="tip">
+          <strong>Dica:</strong> para máxima compatibilidade, use ROMs limpas no formato <code>.gba</code>.
+        </div>
+      </section>
+
+      <aside class="card card--library">
+        <div class="card__header">
+          <h2>Biblioteca</h2>
+          <p>Jogos importados ficam salvos localmente no navegador.</p>
+        </div>
+        <ul id="rom-list" class="rom-list"></ul>
+      </aside>
+    </main>
+
+    <template id="rom-item-template">
+      <li class="rom-item">
+        <div class="rom-item__meta">
+          <h3></h3>
+          <small></small>
+        </div>
+        <div class="rom-item__actions">
+          <button class="btn btn--small btn-play">Abrir</button>
+          <button class="btn btn--small btn--danger btn-remove">Excluir</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
